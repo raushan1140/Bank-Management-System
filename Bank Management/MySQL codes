@@ -1,0 +1,49 @@
+
+create database bankSystem;
+use bankSystem;
+
+
+create table signup(form_no varchar(30), name varchar(30), 
+father_name varchar(30), DOB varchar(30), gender varchar(30),
+email varchar(80), marital_status varchar(30), adress varchar(200),
+city varchar(30), pincode varchar(30), state varchar(50));
+
+select * from signup;
+
+create table signuptwo(form_no varchar(30), religion varchar(30), 
+category varchar(30), income varchar(30), education varchar(30),
+occupation varchar(80), pan varchar(30), aadhaar varchar(200),
+seniorcitizen varchar(30), existing_account varchar(30));
+
+
+select * from signuptwo;
+
+create table signupthree(form_no varchar(30), account_type varchar(40), 
+card_number varchar(30), pin varchar(30), services varchar(250));
+
+
+
+select * from signupthree;
+
+create table login(form_no varchar(30), card_number varchar(50), 
+ pin varchar(30));
+ 
+
+ select * from login;
+ 
+ ALTER TABLE signupthree MODIFY services VARCHAR(900);
+
+
+create table bank(pin varchar(10), date varchar(50), type varchar(30),
+ amount varchar(30));
+ ALTER TABLE bank ADD COLUMN total_amount INT DEFAULT 0;
+ 
+ select * from bank;
+
+SET SQL_SAFE_UPDATES = 0;
+
+SELECT s.name
+FROM signup s
+JOIN signupthree st3 ON s.form_no = st3.form_no
+WHERE st3.pin = '5252';
+
